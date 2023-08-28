@@ -22,7 +22,7 @@ function App() {
       } catch (error) {
         console.log("error.message:", error.message);
       }
-    }, 120000);
+    }, 600000);
 
     return () => {
       clearInterval(timerId);
