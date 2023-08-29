@@ -14,7 +14,7 @@ function App() {
           `https://projectteam7-backend.onrender.com/auth/signin`,
           {
             email: "user@example.com",
-            password: "qwerty123",
+            password: "Qwerty123",
           }
         );
         setCount((count) => count + 1);
