@@ -7,23 +7,25 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    const timerId = setInterval(async () => {
-      try {
-        const { data } = await axios.post(
-          `https://projectteam7-backend.onrender.com/auth/signin`,
-          {
-            email: "user@example.com",
-            password: "Qwerty123",
-          }
-        );
-        setCount((count) => count + 1);
-        console.log("data:", data);
-      } catch (error) {
-        console.log("error.message:", error.message);
-      }
-    }, 600000);
+  const fetchServer = async ()=>{
+    try {
+      const { data } = await axios.post(
+        `https://projectteam7-backend.onrender.com/auth/signin`,
+        {
+          email: "user@example.com",
+          password: "Qwerty123",
+        }
+      );
+      setCount((count) => count + 1);
+      console.log("data:", data);
+    } catch (error) {
+      console.log("error.message:", error.message);
+    }
+  }
 
+  useEffect( () => {
+    fetchServer()
+    const timerId = setInterval(fetchServer, 600000);
     return () => {
       clearInterval(timerId);
     };
